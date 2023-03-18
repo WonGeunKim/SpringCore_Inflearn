@@ -16,7 +16,15 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+/*
+    // 필드 주입
+    @Autowired private MemberRepository memberRepository;
+    @Autowired private DiscountPolicy discountPolicy;
+    */
+
+    // 생성자가 딱 1개만 있으면 @Autowired를 생략해도 자동 주입 된다. 물론 스프링 빈에만 해당한다.
     // @Autowired 를 사용하면 생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
+    // 생성자 주입
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) { // 생성자를 통해서 할당
         this.memberRepository = memberRepository;
@@ -26,7 +34,29 @@ public class OrderServiceImpl implements OrderService{
     // 인터페이스에만 의존
 //    private DiscountPolicy discountPolicy;
     // final은 무조건 값이 할당되어야 함
-    
+
+
+/*
+    // 수정자(setter) 주입
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
+*/
+
+/*
+    // 일반 메서드 주입
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+    */
 
 
     @Override
