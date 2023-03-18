@@ -13,8 +13,14 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
+
+//    생성자 주입을 사용하면 필드에 final 키워드를 사용할 수 있다. 그래서 생성자에서 혹시라도 값이
+//    설정되지 않는 오류를 컴파일 시점에 막아준다
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+//    private MemberRepository memberRepository;
+//    private DiscountPolicy discountPolicy;
 
 /*
     // 필드 주입
@@ -48,6 +54,7 @@ public class OrderServiceImpl implements OrderService{
         this.discountPolicy = discountPolicy;
     }
 */
+
 
 /*
     // 일반 메서드 주입
