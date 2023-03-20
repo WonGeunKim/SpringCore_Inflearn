@@ -56,6 +56,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Autowired
+
     public void setDiscountPolicy(DiscountPolicy discountPolicy) {
         this.discountPolicy = discountPolicy;
     }
