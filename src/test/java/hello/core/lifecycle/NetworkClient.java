@@ -3,6 +3,9 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class NetworkClient {
 // implements InitializingBean , DisposableBean
 
@@ -55,7 +58,7 @@ public class NetworkClient {
     // 인터페이스>*/
 
 
-    // <빈 등록 초기화, 소멸 메서드 지정
+/*    // <빈 등록 초기화, 소멸 메서드 지정
     // 코드가 아니라 설정 정보를 사용하기 때문에 코드를 고칠 수 없는 외부 라이브러리에도 초기화, 종료 메서드를 적용할 수 있다.
     public void init() {
         // 의존관계 주입이 끝나면 호출해주겠다 라는 의미
@@ -72,6 +75,25 @@ public class NetworkClient {
 
         disconnect();
     }
-    // 빈 등록 초기화, 소멸 메서드 지정>
+    // 빈 등록 초기화, 소멸 메서드 지정>*/
+
+
+    @PostConstruct
+    public void init() {
+        // 의존관계 주입이 끝나면 호출해주겠다 라는 의미
+
+        System.out.println("NetworkClient.init");
+
+        connect();
+        call("초기화 연결 메시지");
+    }
+
+    @PreDestroy
+    public void close() {
+
+        System.out.println("NetworkClient.close");
+
+        disconnect();
+    }
 
 }
